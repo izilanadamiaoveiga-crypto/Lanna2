@@ -21,6 +21,7 @@ body::after {
     height: 200%;
     background: radial-gradient(circle, rgba(255,77,109,0.2) 0%, transparent 70%);
     animation: mover 10s linear infinite;
+    pointer-events: none;
 }
 
 @keyframes mover {
@@ -40,6 +41,7 @@ body::after {
     animation: fade 1.5s;
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(5px);
+    z-index: 2;
 }
 
 .ativa {
@@ -81,6 +83,13 @@ button {
     cursor: pointer;
     margin-top: 20px;
     box-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+    position: relative;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 .star {
@@ -89,6 +98,7 @@ button {
     height: 2px;
     background: white;
     animation: piscar 2s infinite;
+    pointer-events: none;
 }
 
 @keyframes piscar {
@@ -111,8 +121,8 @@ button {
 
 <body>
 
-<audio id="musica">
-    <source src="musica.mp3">
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <div class="tela ativa" id="t1">
@@ -161,7 +171,10 @@ button {
 function proxima(n) {
     document.getElementById("t" + n).classList.remove("ativa");
     document.getElementById("t" + (n+1)).classList.add("ativa");
-    document.getElementById("musica").play();
+
+    const musica = document.getElementById("musica");
+
+    musica.play().catch(() => {});
 }
 
 const conversa = [
@@ -184,23 +197,34 @@ function iniciarConversa() {
     const chat = document.getElementById("chat");
 
     function escreverLinha() {
+
         if (i < conversa.length) {
+
             let texto = conversa[i];
             let j = 0;
 
             const intervalo = setInterval(() => {
+
                 chat.innerHTML += texto.charAt(j);
                 j++;
 
                 if (j >= texto.length) {
+
                     clearInterval(intervalo);
+
                     chat.innerHTML += "<br><br>";
+
                     i++;
+
                     setTimeout(escreverLinha, 800);
                 }
+
             }, 40);
+
         } else {
+
             document.getElementById("btnFinal").style.display = "inline-block";
+
         }
     }
 
@@ -208,13 +232,18 @@ function iniciarConversa() {
 }
 
 function resposta() {
+
     for (let i = 0; i < 80; i++) {
+
         const heart = document.createElement("div");
+
         heart.innerHTML = "❤️";
+
         heart.style.position = "fixed";
         heart.style.left = "50%";
         heart.style.top = "50%";
         heart.style.fontSize = (Math.random() * 30 + 20) + "px";
+        heart.style.pointerEvents = "none";
 
         document.body.appendChild(heart);
 
@@ -222,24 +251,38 @@ function resposta() {
         const y = (Math.random() - 0.5) * 600;
 
         heart.animate([
-            { transform: "translate(-50%, -50%)", opacity: 1 },
-            { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+            {
+                transform: "translate(-50%, -50%)",
+                opacity: 1
+            },
+            {
+                transform: `translate(${x}px, ${y}px)`,
+                opacity: 0
+            }
         ], {
             duration: 1500,
             easing: "ease-out"
         });
 
-        setTimeout(() => heart.remove(), 1500);
+        setTimeout(() => {
+            heart.remove();
+        }, 1500);
     }
 
     setTimeout(() => {
-        document.getElementById("t7").innerHTML =
-        "<h1>💖 EU TE AMO PRA SEMPRE 💖</h1>";
+
+        document.getElementById("t7").innerHTML = `
+            <h1 class="pulse">💖 EU TE AMO PRA SEMPRE 💖</h1>
+            <p>Você é a melhor coisa que aconteceu na minha vida ❤️</p>
+        `;
+
     }, 1500);
 }
 
 function criarEstrela() {
+
     const estrela = document.createElement("div");
+
     estrela.classList.add("star");
 
     estrela.style.left = Math.random() * 100 + "vw";
@@ -247,7 +290,9 @@ function criarEstrela() {
 
     document.body.appendChild(estrela);
 
-    setTimeout(() => estrela.remove(), 2000);
+    setTimeout(() => {
+        estrela.remove();
+    }, 2000);
 }
 
 setInterval(criarEstrela, 100);
