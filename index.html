@@ -2,119 +2,120 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Lanna ❤️</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: linear-gradient(180deg, #0a0a0a, #2b0033);
-    color: #ffffff;
-    text-align: center;
-    overflow: hidden;
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(180deg,#0a0a0a,#2b0033);
+    overflow:hidden;
+    color:white;
+    text-align:center;
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,77,109,0.2) 0%, transparent 70%);
-    animation: mover 10s linear infinite;
-    pointer-events: none;
+body::after{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle,rgba(255,77,109,.2) 0%,transparent 70%);
+    animation:mover 10s linear infinite;
+    pointer-events:none;
 }
 
-@keyframes mover {
-    from { transform: translate(-25%, -25%); }
-    to { transform: translate(0%, 0%); }
+@keyframes mover{
+    from{transform:translate(-25%,-25%);}
+    to{transform:translate(0%,0%);}
 }
 
-.tela {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-    animation: fade 1.5s;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(5px);
-    z-index: 2;
+.tela{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:20px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(5px);
+    animation:fade 1s;
+    z-index:2;
 }
 
-.ativa {
-    display: flex;
+.ativa{
+    display:flex;
 }
 
-@keyframes fade {
-    from {opacity: 0;}
-    to {opacity: 1;}
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 
-h1 {
-    font-size: 38px;
-    color: #ff4d6d;
+h1{
+    color:#ff4d6d;
+    font-size:40px;
 }
 
-.pulse {
-    animation: pulse 2s infinite;
+p{
+    max-width:700px;
+    font-size:22px;
+    line-height:1.5;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+button{
+    padding:15px 28px;
+    border:none;
+    border-radius:14px;
+    background:#ff4d6d;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:25px;
+    box-shadow:0 0 15px #ff4d6d;
+    transition:.3s;
+    z-index:10;
 }
 
-p {
-    font-size: 20px;
-    max-width: 600px;
+button:hover{
+    transform:scale(1.05);
 }
 
-button {
-    padding: 15px 25px;
-    border: none;
-    border-radius: 12px;
-    background: #ff4d6d;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
-    position: relative;
-    z-index: 10;
-    transition: 0.3s;
+.pulse{
+    animation:pulse 2s infinite;
 }
 
-button:hover {
-    transform: scale(1.05);
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
 }
 
-.star {
-    position: fixed;
-    width: 2px;
-    height: 2px;
-    background: white;
-    animation: piscar 2s infinite;
-    pointer-events: none;
+.star{
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    animation:piscar 2s infinite;
+    pointer-events:none;
 }
 
-@keyframes piscar {
-    0% {opacity: 0;}
-    50% {opacity: 1;}
-    100% {opacity: 0;}
+@keyframes piscar{
+    0%{opacity:0;}
+    50%{opacity:1;}
+    100%{opacity:0;}
 }
 
-#chat {
-    font-size: 20px;
-    max-width: 600px;
-    min-height: 120px;
+#chat{
+    font-size:22px;
+    max-width:700px;
+    min-height:120px;
 }
 
-#btnFinal {
-    display: none;
+#btnFinal{
+    display:none;
 }
 </style>
 </head>
@@ -122,180 +123,366 @@ button:hover {
 <body>
 
 <audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
+<source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <div class="tela ativa" id="t1">
-    <h1 class="pulse">💖 Para você, Lanna 💖</h1>
-    <p>Eu fiz isso só pra te mostrar o quanto você é importante pra mim...</p>
-    <button onclick="proxima(1)">Começar 💘</button>
+<h1 class="pulse">💖 Para você, Lanna 💖</h1>
+<p>Eu fiz isso só pra te mostrar o quanto você é importante pra mim...</p>
+<button onclick="proxima(1)">Começar 💘</button>
 </div>
 
 <div class="tela" id="t2">
-    <h1>18/02 💫</h1>
-    <p>Foi nesse dia que eu te conheci...<br><br>E tudo começou a mudar.</p>
-    <button onclick="proxima(2)">Continuar</button>
+<h1>18/02 💫</h1>
+<p>Foi nesse dia que eu te conheci... e tudo começou a mudar.</p>
+<button onclick="proxima(2)">Continuar</button>
 </div>
 
 <div class="tela" id="t3">
-    <h1>Com o tempo 💭</h1>
-    <p>Cada conversa sua virou a melhor parte do meu dia...</p>
-    <button onclick="proxima(3)">Continuar</button>
+<h1>💭</h1>
+<p>Cada conversa sua virou a melhor parte do meu dia...</p>
+<button onclick="proxima(3)">Continuar</button>
 </div>
 
 <div class="tela" id="t4">
-    <h1>14/07 ❤️</h1>
-    <p>O dia que nasceu a pessoa que mudou tudo pra mim...</p>
-    <button onclick="proxima(4)">Continuar</button>
+<h1>❤️</h1>
+<p>Seu jeito me faz esquecer qualquer coisa ruim...</p>
+<button onclick="proxima(4)">Continuar</button>
 </div>
 
 <div class="tela" id="t5">
-    <h1>Hoje 💞</h1>
-    <p>Hoje eu só sei de uma coisa... eu te amo ❤️</p>
-    <button onclick="proxima(5)">Continuar</button>
+<h1>🌙</h1>
+<p>As madrugadas falando com você viraram meu lugar favorito...</p>
+<button onclick="proxima(5)">Continuar</button>
 </div>
 
 <div class="tela" id="t6">
-    <h1>💖 Promessa 💖</h1>
-    <p>Isso é só o começo da nossa história...</p>
-    <button onclick="final()">Final 💘</button>
+<h1>✨</h1>
+<p>Seu sorriso consegue iluminar até os meus piores dias.</p>
+<button onclick="proxima(6)">Continuar</button>
 </div>
 
 <div class="tela" id="t7">
-    <h1>💬 Conversa...</h1>
-    <p id="chat"></p>
-    <button id="btnFinal" onclick="resposta()">💖 Fica comigo pra sempre?</button>
+<h1>💞</h1>
+<p>Você entrou na minha vida de um jeito inesperado...</p>
+<button onclick="proxima(7)">Continuar</button>
+</div>
+
+<div class="tela" id="t8">
+<h1>🌹</h1>
+<p>E sinceramente? Foi a melhor coisa que aconteceu comigo.</p>
+<button onclick="proxima(8)">Continuar</button>
+</div>
+
+<div class="tela" id="t9">
+<h1>🫶</h1>
+<p>Com você eu consigo ser eu mesmo sem medo.</p>
+<button onclick="proxima(9)">Continuar</button>
+</div>
+
+<div class="tela" id="t10">
+<h1>💖</h1>
+<p>Você virou meu pensamento favorito.</p>
+<button onclick="proxima(10)">Continuar</button>
+</div>
+
+<div class="tela" id="t11">
+<h1>🌌</h1>
+<p>Talvez o universo tenha dado um jeito da gente se encontrar...</p>
+<button onclick="proxima(11)">Continuar</button>
+</div>
+
+<div class="tela" id="t12">
+<h1>💫</h1>
+<p>Você conseguiu tocar meu coração de um jeito inexplicável.</p>
+<button onclick="proxima(12)">Continuar</button>
+</div>
+
+<div class="tela" id="t13">
+<h1>🫀</h1>
+<p>Eu nunca imaginei sentir algo tão forte assim.</p>
+<button onclick="proxima(13)">Continuar</button>
+</div>
+
+<div class="tela" id="t14">
+<h1>💭</h1>
+<p>Às vezes eu fico sorrindo sozinho pensando em você.</p>
+<button onclick="proxima(14)">Continuar</button>
+</div>
+
+<div class="tela" id="t15">
+<h1>🌠</h1>
+<p>Nem todas as estrelas brilham mais do que seus olhos.</p>
+<button onclick="proxima(15)">Continuar</button>
+</div>
+
+<div class="tela" id="t16">
+<h1>💌</h1>
+<p>Se eu escrevesse tudo o que sinto, faltariam palavras.</p>
+<button onclick="proxima(16)">Continuar</button>
+</div>
+
+<div class="tela" id="t17">
+<h1>❤️</h1>
+<p>Você faz meu coração bater diferente.</p>
+<button onclick="proxima(17)">Continuar</button>
+</div>
+
+<div class="tela" id="t18">
+<h1>🌹</h1>
+<p>Eu escolheria você em todas as vidas.</p>
+<button onclick="proxima(18)">Continuar</button>
+</div>
+
+<div class="tela" id="t19">
+<h1>✨</h1>
+<p>Seu abraço parece casa pra mim.</p>
+<button onclick="proxima(19)">Continuar</button>
+</div>
+
+<div class="tela" id="t20">
+<h1>💞</h1>
+<p>Você virou uma das partes mais importantes da minha vida.</p>
+<button onclick="proxima(20)">Continuar</button>
+</div>
+
+<div class="tela" id="t21">
+    <h1 class="pulse">💖 EU TE AMO 💖</h1>
+
+    <p>
+    Eu não consigo explicar o tamanho do que eu sinto por você...<br><br>
+
+    Mas desde que você entrou na minha vida, tudo começou a ficar diferente.<br><br>
+
+    Seu sorriso virou minha paz.<br>
+    Sua voz virou meu conforto.<br>
+    E conversar com você virou a melhor parte dos meus dias.<br><br>
+
+    Você conseguiu ocupar um espaço no meu coração que ninguém nunca ocupou antes.<br><br>
+
+    E sinceramente?<br><br>
+
+    Eu amo cada detalhe seu.<br>
+    Seu jeito.<br>
+    Sua personalidade.<br>
+    Seu carinho.<br>
+    Seu olhar.<br><br>
+
+    Eu amo você por inteira. ❤️<br><br>
+
+    Mesmo quando eu não sei demonstrar direito... ainda assim, meu coração sempre escolhe você.<br><br>
+
+    E se eu pudesse fazer um pedido agora...<br><br>
+
+    Seria continuar vivendo momentos ao seu lado por muito, muito tempo. 💞
+    </p>
+
+    <button onclick="proxima(21)">Continuar</button>
+</div>
+
+<div class="tela" id="t22">
+<h1 class="pulse">💞 VOCÊ É MEU MUNDO 💞</h1>
+
+<p>
+Porque no final de tudo...<br><br>
+
+É você quem ocupa meus pensamentos.<br>
+É você quem consegue arrancar meus melhores sorrisos.<br>
+É você quem faz meu coração acelerar sem esforço algum.<br><br>
+
+Você apareceu na minha vida de uma forma tão inesperada...<br>
+Mas conseguiu se tornar uma das pessoas mais importantes pra mim.<br><br>
+
+E sabe o que é mais louco?<br><br>
+
+Mesmo depois de tudo...<br>
+Mesmo com o tempo passando...<br>
+Meu sentimento por você só aumenta cada vez mais. ❤️<br><br>
+
+Eu amo ouvir sua voz.<br>
+Amo conversar com você.<br>
+Amo seus detalhes.<br>
+Amo sua existência.<br><br>
+
+Você é literalmente meu lugar favorito no mundo inteiro. 💖<br><br>
+
+E se depender de mim...<br>
+Eu ainda quero criar milhares de momentos ao seu lado. ✨
+</p>
+
+<button onclick="proxima(22)">Continuar 💘</button>
+</div>
+
+<div class="tela" id="t23">
+<h1 class="pulse">💖 PRA SEMPRE NÓS 💖</h1>
+
+<p>
+E depois de tudo isso...<br><br>
+
+Depois de cada conversa.<br>
+Cada risada.<br>
+Cada momento.<br>
+Cada sentimento que foi crescendo dentro de mim...<br><br>
+
+Eu percebi que não quero só momentos com você.<br><br>
+
+Eu quero você.<br><br>
+
+Quero continuar ouvindo sua voz.<br>
+Quero continuar fazendo parte dos seus dias.<br>
+Quero continuar criando memórias ao seu lado.<br><br>
+
+Porque você se tornou alguém impossível de substituir no meu coração. ❤️<br><br>
+
+E independentemente do tempo...<br>
+Dos problemas...<br>
+Ou da distância...<br><br>
+
+Meu coração sempre vai escolher você. 💞<br><br>
+
+Então agora eu só preciso saber de uma coisa...
+</p>
+
+<button id="btnFinal" onclick="resposta()">💍 Quer continuar essa história comigo?</button>
 </div>
 
 <script>
-function proxima(n) {
-    document.getElementById("t" + n).classList.remove("ativa");
-    document.getElementById("t" + (n+1)).classList.add("ativa");
+function proxima(n){
 
-    const musica = document.getElementById("musica");
+document.getElementById("t"+n).classList.remove("ativa");
+document.getElementById("t"+(n+1)).classList.add("ativa");
 
-    musica.play().catch(() => {});
+document.getElementById("musica").play().catch(()=>{});
+
 }
 
-const conversa = [
-    "Oi... 💖",
-    "Eu tava pensando em você...",
-    "Desde o dia 18/02 tudo mudou...",
-    "E no dia 14/07 eu tive certeza...",
-    "Você é tudo pra mim ❤️",
-    "Então eu preciso te perguntar..."
+const conversa=[
+"Oi... 💖",
+"Eu tava pensando em você...",
+"Desde o dia que te conheci tudo mudou...",
+"E eu tive certeza de uma coisa...",
+"Você é tudo pra mim ❤️",
+"Então eu preciso te perguntar..."
 ];
 
-function final() {
-    document.getElementById("t6").classList.remove("ativa");
-    document.getElementById("t7").classList.add("ativa");
-    iniciarConversa();
+function iniciarConversa(){
+
+let i=0;
+const chat=document.getElementById("chat");
+
+function escreverLinha(){
+
+if(i<conversa.length){
+
+let texto=conversa[i];
+let j=0;
+
+const intervalo=setInterval(()=>{
+
+chat.innerHTML+=texto.charAt(j);
+
+j++;
+
+if(j>=texto.length){
+
+clearInterval(intervalo);
+
+chat.innerHTML+="<br><br>";
+
+i++;
+
+setTimeout(escreverLinha,800);
+
 }
 
-function iniciarConversa() {
-    let i = 0;
-    const chat = document.getElementById("chat");
+},40);
 
-    function escreverLinha() {
+}else{
 
-        if (i < conversa.length) {
+document.getElementById("btnFinal").style.display="inline-block";
 
-            let texto = conversa[i];
-            let j = 0;
-
-            const intervalo = setInterval(() => {
-
-                chat.innerHTML += texto.charAt(j);
-                j++;
-
-                if (j >= texto.length) {
-
-                    clearInterval(intervalo);
-
-                    chat.innerHTML += "<br><br>";
-
-                    i++;
-
-                    setTimeout(escreverLinha, 800);
-                }
-
-            }, 40);
-
-        } else {
-
-            document.getElementById("btnFinal").style.display = "inline-block";
-
-        }
-    }
-
-    escreverLinha();
 }
 
-function resposta() {
-
-    for (let i = 0; i < 80; i++) {
-
-        const heart = document.createElement("div");
-
-        heart.innerHTML = "❤️";
-
-        heart.style.position = "fixed";
-        heart.style.left = "50%";
-        heart.style.top = "50%";
-        heart.style.fontSize = (Math.random() * 30 + 20) + "px";
-        heart.style.pointerEvents = "none";
-
-        document.body.appendChild(heart);
-
-        const x = (Math.random() - 0.5) * 600;
-        const y = (Math.random() - 0.5) * 600;
-
-        heart.animate([
-            {
-                transform: "translate(-50%, -50%)",
-                opacity: 1
-            },
-            {
-                transform: `translate(${x}px, ${y}px)`,
-                opacity: 0
-            }
-        ], {
-            duration: 1500,
-            easing: "ease-out"
-        });
-
-        setTimeout(() => {
-            heart.remove();
-        }, 1500);
-    }
-
-    setTimeout(() => {
-
-        document.getElementById("t7").innerHTML = `
-            <h1 class="pulse">💖 EU TE AMO PRA SEMPRE 💖</h1>
-            <p>Você é a melhor coisa que aconteceu na minha vida ❤️</p>
-        `;
-
-    }, 1500);
 }
 
-function criarEstrela() {
+escreverLinha();
 
-    const estrela = document.createElement("div");
-
-    estrela.classList.add("star");
-
-    estrela.style.left = Math.random() * 100 + "vw";
-    estrela.style.top = Math.random() * 100 + "vh";
-
-    document.body.appendChild(estrela);
-
-    setTimeout(() => {
-        estrela.remove();
-    }, 2000);
 }
 
-setInterval(criarEstrela, 100);
+document.getElementById("t23").addEventListener("click",()=>{
+if(document.getElementById("chat").innerHTML==""){
+iniciarConversa();
+}
+});
+
+function resposta(){
+
+for(let i=0;i<100;i++){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+heart.style.left="50%";
+heart.style.top="50%";
+heart.style.fontSize=(Math.random()*30+20)+"px";
+heart.style.pointerEvents="none";
+
+document.body.appendChild(heart);
+
+const x=(Math.random()-.5)*800;
+const y=(Math.random()-.5)*800;
+
+heart.animate([
+{
+transform:"translate(-50%,-50%)",
+opacity:1
+},
+{
+transform:`translate(${x}px,${y}px)`,
+opacity:0
+}
+],{
+duration:2000,
+easing:"ease-out"
+});
+
+setTimeout(()=>{
+heart.remove();
+},2000);
+
+}
+
+setTimeout(()=>{
+
+document.getElementById("t23").innerHTML=`
+<h1 class="pulse">💖 EU TE AMO PRA SEMPRE 💖</h1>
+<p>Você é a melhor coisa que aconteceu na minha vida ❤️</p>
+`;
+
+},1500);
+
+}
+
+function criarEstrela(){
+
+const estrela=document.createElement("div");
+
+estrela.classList.add("star");
+
+estrela.style.left=Math.random()*100+"vw";
+estrela.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(estrela);
+
+setTimeout(()=>{
+estrela.remove();
+},2000);
+
+}
+
+setInterval(criarEstrela,100);
 </script>
 
 </body>
